@@ -7,12 +7,12 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region <your-aws-region>)
+      - $(aws ecr get-login --no-include-email --region ap-south-1) # Update the region if necessary
   build:
     commands:
       - echo Build started on `date`
-      - docker build -t <your-ecr-repo-url>/<your-image-name> .
-      - docker push <your-ecr-repo-url>/<your-image-name>
+      - docker build -t 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app .
+      - docker push 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app
   post_build:
     commands:
       - echo Build completed on `date`

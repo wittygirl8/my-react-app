@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 19
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region <your-aws-region>)
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker build -t <your-ecr-repo-url>/<your-image-name> .
+      - docker push <your-ecr-repo-url>/<your-image-name>
+  post_build:
+    commands:
+      - echo Build completed on `date`

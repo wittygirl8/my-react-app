@@ -9,6 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - docker build -t 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app .
+      - echo Build started on 2 `date`
       - docker push 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app
   post_build:
     commands:

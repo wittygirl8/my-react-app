@@ -1,6 +1,6 @@
 version: 0.2
 
-phases:
+phases:\
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -10,7 +10,6 @@ phases:
       - echo Build started on `date`
       - ls
       - docker --version
-      - docker build -t my-react-app .
       - docker tag my-react-app:latest 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app:latest
       - docker push 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app:latest
   post_build:

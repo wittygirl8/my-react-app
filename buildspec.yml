@@ -4,12 +4,11 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region ap-south-1) # Update the region if necessary
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 337061487615.dkr.ecr.ap-south-1.amazonaws.com
   build:
     commands:
       - echo Build started on `date`
       - docker build -t 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app .
-      - echo Build started on 2 `date`
       - docker push 337061487615.dkr.ecr.ap-south-1.amazonaws.com/my-react-app
   post_build:
     commands:
